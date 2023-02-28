@@ -184,3 +184,25 @@ class LinkedList:
             previous_node = current_node
 
         print('Reference node {} not found in linked list...'.format(reference_node))
+        
+    def search(self, reference_node: str):
+        '''
+        Searches for a node with a specific value in the linked list.
+
+        Args:
+            target_node (str): the value of the node to search for
+
+        Returns:
+            bool: True if the node is found, False otherwise
+        '''
+        if self.start is None:
+            print('Empty linked list...')
+            return False
+
+        for node in self:
+            if node.data == reference_node:
+                print(f'{reference_node} found in the linked list.')
+                return True
+
+        print(f'{reference_node} not found in the linked list.')
+        return False

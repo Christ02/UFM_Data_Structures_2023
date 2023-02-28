@@ -50,3 +50,5 @@ ll.delete('D')
 print(ll)
 ll.delete('C')
 print(ll)
+
+print(ll.search('G'))  # output: True
