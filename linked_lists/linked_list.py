@@ -1,22 +1,35 @@
 class Node:
     '''
-    Node object.
+    Node object for Doubly Non-Circular Linked List.
+
 
     Args:
-        data (str): string value to store in node
+        song_id (int): ID of the song
+        name (str): Name of the song
+        artist (str): Name of the artist
+        album (str): Name of the album
 
     Attributes:
-        data (str): value stored in node
+        song_id (int): ID of the song
+        name (str): Name of the song
+        artist (str): Name of the artist
+        album (str): Name of the album
+        prev (Node): pointer to previous node in list
         next (Node): pointer to next node in list
     '''
     
-    def __init__(self, data: str):
-        self.data = data
+    def __init__(self,  song_id: int, name: str, artist: str, album: str):
+        self.song_id = song_id
+        self.name = name
+        self.artist = artist
+        self.album = album
+        self.prev = None
         self.next = None
 
 
     def __repr__(self):
-        return '| Data: {} |'.format(self.data)
+        return '| ID: {} | Name: {} | Artist: {} | Album: {} |'.format(
+            self.song_id, self.name, self.artist, self.album)
 
 
 class LinkedList:
