@@ -32,9 +32,9 @@ class Node:
             self.song_id, self.name, self.artist, self.album)
 
 
-class LinkedList:
+class DoublyLinkedList:
     '''
-    Linked List object.
+    Doubly Non-Circular Linked List object.
 
     Args:
         None
@@ -59,10 +59,10 @@ class LinkedList:
         nodes = ["START"]
 
         for node in self:
-            nodes.append(node.data)
+            nodes.append(str(node))
 
         nodes.append("NIL")
-        return " --> ".join(nodes)
+        return " <--> ".join(nodes)
 
 
     def traverse(self):
@@ -81,21 +81,6 @@ class LinkedList:
         while current_node is not None:
             print(current_node)
             current_node = current_node.next
-
-
-    def traverse_iter(self):
-        '''
-        Iterates trough the list using the __iter__ method.
-
-        Args:
-            None
-
-        Returns:
-            None
-        '''
-
-        for current_node in self:
-            print(current_node)
 
 
     def insert_at_beginning(self, new_node: Node):
