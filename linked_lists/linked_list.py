@@ -1,39 +1,27 @@
 class Node:
     '''
-    Node object for Doubly Non-Circular Linked List.
+    Node object.
 
     Args:
-        song_id (int): ID of the song
-        name (str): Name of the song
-        artist (str): Name of the artist
-        album (str): Name of the album
+        data (str): string value to store in node
 
     Attributes:
-        song_id (int): ID of the song
-        name (str): Name of the song
-        artist (str): Name of the artist
-        album (str): Name of the album
-        prev (Node): pointer to previous node in list
+        data (str): value stored in node
         next (Node): pointer to next node in list
     '''
     
-    def __init__(self,  song_id: int, name: str, artist: str, album: str):
-        self.song_id = song_id
-        self.name = name
-        self.artist = artist
-        self.album = album
-        self.prev = None
+    def __init__(self, data: str):
+        self.data = data
         self.next = None
 
 
     def __repr__(self):
-        return '| ID: {} | Name: {} | Artist: {} | Album: {} |'.format(
-            self.song_id, self.name, self.artist, self.album)
+        return '| Data: {} |'.format(self.data)
 
 
-class DoublyLinkedList:
+class LinkedList:
     '''
-    Doubly Non-Circular Linked List object.
+    Linked List object.
 
     Args:
         None
@@ -45,6 +33,7 @@ class DoublyLinkedList:
     def __init__(self):
         self.start = None
 
+
     def __iter__(self):
         node = self.start
 
@@ -52,14 +41,16 @@ class DoublyLinkedList:
             yield node
             node = node.next
 
+
     def __repr__(self):
         nodes = ["START"]
 
         for node in self:
-            nodes.append(str(node))
+            nodes.append(node.data)
 
         nodes.append("NIL")
-        return " <--> ".join(nodes)
+        return " --> ".join(nodes)
+
 
     def traverse(self):
         '''
@@ -70,12 +61,29 @@ class DoublyLinkedList:
 
         Returns:
             None
-        '''  
+        '''
+        
         current_node = self.start
 
         while current_node is not None:
             print(current_node)
             current_node = current_node.next
+
+
+    def traverse_iter(self):
+        '''
+        Iterates trough the list using the __iter__ method.
+
+        Args:
+            None
+
+        Returns:
+            None
+        '''
+
+        for current_node in self:
+            print(current_node)
+
 
     def insert_at_beginning(self, new_node: Node):
         '''
@@ -87,15 +95,10 @@ class DoublyLinkedList:
         Returns:
             None
         '''
-        if self.start is None:
-            self.start = new_node
-            self.current = new_node
-        else:
-            new_node.next = self.start
-            self.start.prev = new_node
-            
+
+        new_node.next = self.start
         self.start = new_node
-        self.length += 1
+
 
     def insert_at_end(self, new_node: Node):
         '''
@@ -109,16 +112,13 @@ class DoublyLinkedList:
         '''
 
         if self.start is None:
-            self.insert_at_beginning(new_node)
-        else:
-            current_node = self.start
+            self.start = new_node
 
-            while current_node.next is not None:
-                current_node = current_node.next
+        else:
+            for current_node in self:
+                pass
 
             current_node.next = new_node
-            new_node.prev = current_node
-            self.length += 1
 
 
     def insert_before(self, reference_node: str, new_node: Node):
@@ -131,31 +131,27 @@ class DoublyLinkedList:
 
         Returns:
             None
-            
-        Update:
-            the prev and the next pointers
         '''
 
         if self.start is None:
             print('Empty linked list...')
             return
 
-        if self.start == reference_node:
-            self.insert_at_beginning(new_node)
-            return
+        if self.start.data == reference_node:
+            return self.insert_at_beginning(new_node)
 
-        current_node = self.start
+        previous_node = self.start
 
-        while current_node is not None:
-            if current_node == reference_node:
-                new_node.prev = current_node.prev
-                current_node.prev.next = new_node
+        for current_node in self:
+
+            if current_node.data == reference_node:
+                previous_node.next = new_node
                 new_node.next = current_node
-                current_node.prev = new_node
                 return
-            current_node = current_node.next
+            
+            previous_node = current_node
 
-        print('Reference node not found in linked list...')
+        print('Reference node {} not found in linked list...'.format(reference_node))
 
 
     def delete(self, reference_node: str):
