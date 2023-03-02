@@ -184,7 +184,10 @@ class LinkedList:
             previous_node = current_node
 
         print('Reference node {} not found in linked list...'.format(reference_node))
-        
+
+
+### **Exercise #1: Class improvements**
+
     def search(self, reference_node: str):
         '''
         Searches for a node with a specific value in the linked list.
@@ -206,6 +209,8 @@ class LinkedList:
 
         print(f'{reference_node} not found in the linked list.')
         return False
+    
+### **Exercise #2: Playlist Implementation**
     
 class Node_song:
     def __init__(self, id, name, artist, album):
