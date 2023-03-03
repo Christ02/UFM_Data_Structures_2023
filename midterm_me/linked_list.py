@@ -1,4 +1,3 @@
-from stack import Stack
 
 class Node:
     '''
@@ -188,6 +187,7 @@ class LinkedList:
 
         print('Reference node {} not found in linked list...'.format(reference_node))
         
+    
     def reverse_in_place(self):
         '''
         '''
@@ -207,7 +207,6 @@ class LinkedList:
             
         self.start = prev_node
         return self.start
-    
 
 
     
