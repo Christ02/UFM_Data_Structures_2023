@@ -2,7 +2,6 @@ from linked_list import LinkedList, Node
 from stack import Stack
 
 linked_list = LinkedList()
-
 for i in range(10):
     node = Node(str(i))
     linked_list.insert_at_end(node)
