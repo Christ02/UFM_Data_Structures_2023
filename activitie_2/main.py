@@ -38,7 +38,6 @@ def traverse_with_pickle():
 def main():
     ll = DoublyLinkedList()
     ll = insert_songs(ll)
-    save_to_pickle(ll)
     traverse(ll)
     sys.setrecursionlimit(1000000)
     print(sys.getrecursionlimit())
@@ -46,5 +45,4 @@ def main():
     traverse_with_pickle()
 
 
-if __name__ == "__main__":
-    main()
+main()
