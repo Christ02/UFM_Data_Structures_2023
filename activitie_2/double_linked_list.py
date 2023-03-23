@@ -13,6 +13,13 @@ class DoublyLinkedList:
         self.tail = None
         self.current = None
         self.length = 0
+        
+    def __iter__(self):
+        node = self.head
+
+        while node is not None:
+            yield node
+            node = node.next
 
     def insert_end(self, song_id: int, name: str, artist: str, album: str):
         new_node = Node_song(song_id, name, artist, album)

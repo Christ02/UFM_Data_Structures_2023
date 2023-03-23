@@ -9,7 +9,7 @@ from data_persistence import pickle_object, unpickle_object
 
 @profile
 def insert_songs(ll):
-    for i in range(2525):
+    for i in range(5000):
         ll.insert_beginning('1', 'Dakiti', 'Bad Bunny ft. Jhay Cortez', 'El Último Tour Del Mundo')
         ll.insert_beginning('2', 'Baila Baila Baila', 'Ozuna', 'Nibiru')
         ll.insert_beginning('3', 'Tusa', 'Karol G ft. Nicki Minaj', 'KG0516')
