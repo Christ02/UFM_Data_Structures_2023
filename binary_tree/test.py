@@ -1,5 +1,4 @@
 from trees import BinarySearchTree
-import random
 
 
 # Instantiate BST
